@@ -1,0 +1,39 @@
+CREATE TRIGGER `tgkuranginstokbahanbaku` AFTER DELETE ON `tb_detail_pembelian`
+ FOR EACH ROW begin
+update tb_bahan_baku
+set Stok = Stok - Old.Qty
+where Kode_Bahan_Baku = Old.Kode_Bahan_Baku;
+
+end
+
+CREATE TRIGGER `tgupdtbahanbaku` AFTER INSERT ON `tb_detail_pembelian`
+ FOR EACH ROW begin
+update tb_bahan_baku
+set Stok = Stok + New.Qty
+where Kode_Bahan_Baku = New.Kode_Bahan_Baku;
+
+end
+
+CREATE TRIGGER `tgdeletetbdetail` AFTER DELETE ON `tb_header_pembelian_bahanbaku`
+ FOR EACH ROW begin
+delete from tb_detail_pembelian
+where No_Faktur = Old.No_Faktur;
+
+end
+
+
+CREATE TRIGGER `tgkuranginstokbahanbaku` AFTER DELETE ON `tb_detail_pembelian`
+ FOR EACH ROW begin
+update tb_bahan_baku
+set Stok = Stok - Old.Qty
+where Kode_Bahan_Baku = Old.Kode_Bahan_Baku;
+
+end
+
+CREATE TRIGGER `tgupdtbahanbaku` AFTER INSERT ON `tb_detail_pembelian`
+ FOR EACH ROW begin
+update tb_bahan_baku
+set Stok = Stok + New.Qty
+where Kode_Bahan_Baku = New.Kode_Bahan_Baku;
+
+end
